@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendSense</title>
+    <link rel="stylesheet" href="../css/homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!--  should add pa more details/features soon about sa homepage after mahuman na tanan ang main dashboards and other features since you need pictures inside sa website to showcase-->
+
+    <!-- Topline Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="headline">
+                <h1>Save with Sense,<br>Save with Confidence.</h1>
+                <p>Empowers you to track, manage, and understand your expenses with ease.</p>
+                <a href="../html/signup.html"> <!-- dapat js ni siya na part -->
+
+                    <button class="cta-button">Get Started <i class="fas fa-arrow-right"></i></button>
+                </a>
+            </div>
+            <div class="hero-image">
+                <div class="dashboard-preview">
+                    <img src="" alt="Sample Dashboard Preview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships Section / need to chage this to logos -->
+    <section class="partners">
+        <p>Loved and trusted by the Philippines and worldwide</p>
+        <div class="partner-logos">
+            <div class="scrolling-wrapper">
+                <div class="partner">BPI</div>
+                <div class="partner">BDO</div>
+                <div class="partner">METROBANK</div>
+                <div class="partner">ATOME</div>
+                <div class="partner">PAYPAL</div>
+                <div class="partner">WISE</div>
+    
+                <!-- Duplicate para sa smooth looping -->
+                <div class="partner">BPI</div>
+                <div class="partner">BDO</div>
+                <div class="partner">METROBANK</div>
+                <div class="partner">ATOME</div>
+                <div class="partner">PAYPAL</div>
+                <div class="partner">WISE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Feature section -->
+<section class="feature-sec">
+    <div class="feature-sec-body ">
+        <div class="dashboard-container">
+            <div class="header">
+                <div class="header-left">
+                    <h1>Smart Spending, Smart Saving</h1>
+                    <p class="subtitle">Track your daily activities with precision. Monitor sleep, steps, and heart rate to achieve your health goals.</p>
+                    <button class="get-started">Get started <i class="fas fa-arrow-right"></i></button>
+                </div>
+               
+                <!-- Account summary card -->
+                <div class="summary-card">
+                    <div>
+                        <div class="total-balance">₱16,820.45</div>
+                        <div class="balance-change">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>₱2,000 (13.5%) this month</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-btn"><i class="fas fa-plus"></i> Add</button>
+                        <button class="action-btn"><i class="fas fa-file-export"></i> Export</button>
+                        <button class="action-btn"><i class="fas fa-cog"></i> Settings</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Three dashboard cards in a row -->
+            <div class="cards-container">
+                <!-- Monthly Spending -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <span>Monthly Spending</span>
+                        <span class="period">Last 6 months</span>
+                    </div>
+                    <div class="card-subtitle">Track your monthly expenses and identify spending patterns.</div>
+                    
+                    <div class="line-chart-container">
+                        <div class="chart-grid">
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                        </div>
+                        <svg class="line-chart" viewBox="0 0 300 200" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#37c5ff" stop-opacity="0.5"/>
+                                    <stop offset="100%" stop-color="#37c5ff" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Line Path -->
+                            <path 
+                                d="M0,160 L50,110 L100,130 L150,70 L200,90 L250,50 L300,80" 
+                                class="line-path"
+                            />
+                            <!-- Area Path -->
+                            <path 
+                                d="M0,160 L50,110 L100,130 L150,70 L200,90 L250,50 L300,80 L300,200 L0,200 Z" 
+                                class="area-path"
+                            />
+                            <!-- Data Points -->
+                            <circle cx="0" cy="160" r="4" class="chart-dot" />
+                            <circle cx="50" cy="110" r="4" class="chart-dot" />
+                            <circle cx="100" cy="130" r="4" class="chart-dot" />
+                            <circle cx="150" cy="70" r="4" class="chart-dot" />
+                            <circle cx="200" cy="90" r="4" class="chart-dot" />
+                            <circle cx="250" cy="50" r="4" class="chart-dot" />
+                            <circle cx="300" cy="80" r="4" class="chart-dot" />
+                        </svg>
+                    </div>
+                    
+                    <div class="chart-labels">
+                        <span>Oct</span>
+                        <span>Nov</span>
+                        <span>Dec</span>
+                        <span>Jan</span>
+                        <span>Feb</span>
+                        <span>Mar</span>
+                    </div>
+    
+                    <div class="summary-row">
+                        <div class="summary-item">
+                            <div class="summary-value">₱26,486</div>
+                            <div class="summary-label">Average</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱57,210</div>
+                            <div class="summary-label">Highest</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱15,825</div>
+                            <div class="summary-label">Lowest</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expense Breakdown -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <span>Expense Breakdown</span>
+                        <span class="period">This month</span>
+                    </div>
+                    <div class="card-subtitle">Detailed categorization of your monthly expenses.</div>
+                    
+                    <div class="pie-chart-container">
+                        <svg width="150" height="150" viewBox="0 0 150 150">
+                            <!-- Rent - 35% -->
+                            <path d="M75,75 L75,0 A75,75 0 0,1 140.2,41.3 Z" fill="#FF6384" />
+                            
+                            <!-- Groceries - 20% -->
+                            <path d="M75,75 L140.2,41.3 A75,75 0 0,1 132.5,117.5 Z" fill="#36A2EB" />
+                            
+                            <!-- Transportation - 15% -->
+                            <path d="M75,75 L132.5,117.5 A75,75 0 0,1 67.8,144.9 Z" fill="#FFCE56" />
+                            
+                            <!-- Utilities - 12% -->
+                            <path d="M75,75 L67.8,144.9 A75,75 0 0,1 9.8,108.7 Z" fill="#4BC0C0" />
+                            
+                            <!-- Entertainment - 10% -->
+                            <path d="M75,75 L9.8,108.7 A75,75 0 0,1 0,75 Z" fill="#9966FF" />
+                            
+                            <!-- Others - 8% -->
+                            <path d="M75,75 L0,75 A75,75 0 0,1 75,0 Z" fill="#FF9F40" />
+                            
+                            <!-- White center circle -->
+                            <circle cx="75" cy="75" r="40" fill="#053547" />
+                        </svg>
+                    </div>
+                    
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #FF6384;"></div>
+                            <span>Rent</span>
+                            <span class="legend-value">₱1,000.00 (20.3%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #36A2EB;"></div>
+                            <span>Groceries</span>
+                            <span class="legend-value">₱500.00 (10.14%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #FFCE56;"></div>
+                            <span>Transportation</span>
+                            <span class="legend-value">₱375.00 (7.61%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #4BC0C0;"></div>
+                            <span>Utilities</span>
+                            <span class="legend-value">₱2,500.00 (50.76%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #9966FF;"></div>
+                            <span>Entertainment</span>
+                            <span class="legend-value">₱250.00 (5.07%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #FF9F40;"></div>
+                            <span>Other</span>
+                            <span class="legend-value">₱300.00 (6.09%)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="total-row">
+                        <div class="total-amount">Total: ₱6,425.00</div>
+                        <div class="other-amount">Monthly Budget: ₱7,000.00</div>
+                    </div>
+                </div>
+                
+                <!-- Weekly Spending -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <span>Weekly Spending</span>
+                        <span class="period">This week</span>
+                    </div>
+                    <div class="card-subtitle">Track your daily expenses throughout the week.</div>
+                    
+                    <div class="bar-chart-container">
+                        <div class="chart-grid">
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                            <div class="grid-line"></div>
+                        </div>
+                        
+                        <div class="bar-container">
+                            <div class="bar" style="height: 40%;">
+                                <div class="bar-value">₱570</div>
+                            </div>
+                            <div class="bar-label">Mon</div>
+                        </div>
+                        
+                        <div class="bar-container">
+                            <div class="bar" style="height: 65%;">
+                                <div class="bar-value">₱699</div>
+                            </div>
+                            <div class="bar-label">Tue</div>
+                        </div>
+                        
+                        <div class="bar-container">
+                            <div class="bar" style="height: 85%;">
+                                <div class="bar-value">₱967</div>
+                            </div>
+                            <div class="bar-label">Wed</div>
+                        </div>
+                        
+                        <div class="bar-container">
+                            <div class="bar" style="height: 55%;">
+                                <div class="bar-value">₱689</div>
+                            </div>
+                            <div class="bar-label">Thu</div>
+                        </div>
+                        
+                        <div class="bar-container">
+                            <div class="bar" style="height: 95%;">
+                                <div class="bar-value">₱1345</div>
+                            </div>
+                            <div class="bar-label">Fri</div>
+                        </div> 
+                        
+                        <div class="bar-container">
+                            <div class="bar" style="height: 70%;">
+                                <div class="bar-value">₱835</div>
+                            </div>
+                            <div class="bar-label">Sat</div>
+                        </div>
+                        
+                        <div class="bar-container">
+                            <div class="bar" style="height: 30%;">
+                                <div class="bar-value">₱436</div>
+                            </div>
+                            <div class="bar-label">Sun</div>
+                        </div>
+                    </div>
+                    
+                    <div class="week-indicator">
+                        <div class="week-dot"></div>
+                        <div class="week-dot"></div>
+                        <div class="week-dot active"></div>
+                        <div class="week-dot"></div>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <div class="summary-item">
+                            <div class="summary-value">₱5,441</div>
+                            <div class="summary-label">Total</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱550.71</div>
+                            <div class="summary-label">Daily avg</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱1,345</div>
+                            <div class="summary-label">Highest</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- End sa Feature Section -->
+
+    <!-- Steps Section -->
+    <section class="steps">
+        <div class="steps-header">
+            <h2>3 easy steps to get started</h2>
+            <p>Begin your journey to financial freedom with these simple steps</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">STEP 1</div>
+                <h3>Sign Up or Login your account</h3>
+                <p>Sign up an account on our website or Get our app from App Store or Google Play and create an account</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">STEP 2</div>
+                <h3>Enter your data</h3>
+                <p>Input your income sources and regular expenses for accurate tracking</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">STEP 3</div>
+                <h3>Manage your finances</h3>
+                <p>Monitor your expenses and make informed decisions</p>
+            </div>
+        </div>
+        <div class="step-image">
+            <img src="app-screenshot.png" alt="App Screenshot">
+        </div>
+    </section>
+
+    <!-- Navbar (fixed na) -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-circle"></i> SpendSense
+        </div>
+        <ul class="nav-links">
+            <li><a href="../html/homepage.html">Home</a></li>
+            <li><a href="../html/aboutpage.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="dropdown">
+                <a href="#">Pricing <i class="fas fa-chevron-down"></i></a>
+            </li>
+        </ul>
+        <div class="right-section">
+            <a href="../html/signup.html">
+                <button class="get-started">Get started <i class="fas fa-arrow-right"></i></button>
+            </a>
+            
+        </div>
+        
+    </nav>
+
+    
+
+    <!--  should add pa details about sa homepage after mahuman na tanan ang main dashboards and mga uban pang features since you need pictures-->
+</body>
+</html>
