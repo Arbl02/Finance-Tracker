@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #edf2f7;
+    background-color: #ecf0f3;
     color: #1a365d;
     line-height: 1.6;
     overflow-x: hidden;
@@ -21,20 +21,20 @@ body {
 /* Neomorphic elements */
 .neomorphic {
     border-radius: 16px;
-    background: #edf2f7;
+    background: #ecf0f3;
     box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
 }
 
 .neomorphic-inset {
     border-radius: 16px;
-    background: #edf2f7;
+    background: #ecf0f3;
     box-shadow: inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff;
 }
 
 .neomorphic-button {
     border: none;
     border-radius: 30px;
-    background: #0d4f71;
+    background: #0080ff;
     color: white;
     padding: 12px 24px;
     font-weight: 600;
@@ -47,7 +47,7 @@ body {
 }
 
 .neomorphic-button:hover {
-    background: #0c6a9e;
+    background: #0080ff;
     transform: translateY(-2px);
 }
 
@@ -65,7 +65,7 @@ body {
 
 /* Navigation */
 header {
-    background-color: #edf2f7;
+    background-color: #ecf0f3;
     padding: 1.5rem 0;
     position: sticky;
     top: 0;
@@ -84,14 +84,14 @@ nav {
     gap: 10px;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #0d4f71;
+    color: #0080ff;
     text-decoration: none;
 }
 
 .logo-circle {
     width: 12px;
     height: 12px;
-    background-color: #0d4f71;
+    background-color: #0080ff;
     border-radius: 50%;
 }
 
@@ -134,7 +134,7 @@ nav {
     font-size: 3.2rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: #1a365d;
+    color: rgb(0, 98, 196);
 }
 
 .hero-image {
@@ -157,7 +157,7 @@ nav {
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: #1a365d;
+    color: rgb(0, 98, 196);
 }
 
 .section-text {
@@ -259,7 +259,7 @@ nav {
 .value-icon svg {
     width: 24px;
     height: 24px;
-    fill: #0d4f71;
+    fill: rgb(0, 98, 196);
 }
 
 .value-title {
