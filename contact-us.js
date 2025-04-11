@@ -1,4 +1,4 @@
-// Office locations data
+// For Office locations ni
     const offices = [
       {
         city: "San Francisco, CA",
@@ -30,7 +30,7 @@
       }
     ];
     
-    // Elements
+    // just getting the Elements from ID
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const officeCity = document.getElementById('officeCity');
@@ -42,11 +42,11 @@
     // Current office index
     let currentOffice = 0;
     
-    // Update office information
+    // para update office information
     function updateOfficeInfo() {
       const office = offices[currentOffice];
       
-      // Add a simple fade effect
+      // pang simple fade effect sa ika click
       officeCity.style.opacity = 0;
       officeEmail.style.opacity = 0;
       officeStreet.style.opacity = 0;
@@ -60,7 +60,7 @@
         officeZip.textContent = office.zip;
         officeImage.src = office.image;
         
-        // Fade in
+        // Fade in ika click
         officeCity.style.opacity = 1;
         officeEmail.style.opacity = 1;
         officeStreet.style.opacity = 1;
@@ -69,13 +69,13 @@
       }, 300);
     }
     
-    // Previous button click
+    // prev button click
     prevBtn.addEventListener('click', () => {
-      // Apply active state animation
+      // giapply active state animation
       prevBtn.classList.add('active');
       setTimeout(() => prevBtn.classList.remove('active'), 200);
       
-      // Go to previous office
+      // balik sa prev office ika click
       currentOffice--;
       if (currentOffice < 0) {
         currentOffice = offices.length - 1;
@@ -83,13 +83,13 @@
       updateOfficeInfo();
     });
     
-    // Next button click
+    // for next button click lang ni
     nextBtn.addEventListener('click', () => {
-      // Apply active state animation
+      // apply active state animation ulet
       nextBtn.classList.add('active');
       setTimeout(() => nextBtn.classList.remove('active'), 200);
       
-      // Go to next office
+      // go to next office
       currentOffice++;
       if (currentOffice >= offices.length) {
         currentOffice = 0;
@@ -97,7 +97,7 @@
       updateOfficeInfo();
     });
     
-    // Form submission
+    // pang form submission
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -105,7 +105,7 @@
       contactForm.reset();
     });
     
-    // Add transition styles
+    // pang add transition styles
     document.head.insertAdjacentHTML('beforeend', `
       <style>
         #officeCity, #officeEmail, #officeStreet, #officeZip, #officeImage {
