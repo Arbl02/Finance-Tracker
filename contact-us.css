@@ -1,0 +1,348 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #ecf0f3;
+      color: #555;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-container {
+      background-color: #ecf0f3;
+      border-radius: 15px;
+      box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), 
+                 -8px -8px 16px rgba(255, 255, 255, 0.8);
+      padding: 15px 25px;
+      margin-bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0080ff;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .nav-links a {
+      color: #555;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    
+    .login-btn {
+      background-color: #0080ff;
+      color: #ecf0f3;
+      border: none;
+      border-radius: 30px;
+      padding: 8px 25px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                 -4px -4px 8px rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .login-btn:hover {
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), 
+                 -2px -2px 4px rgba(255, 255, 255, 0.8);
+    }
+    
+    .main-content {
+      padding: 30px 0;
+    }
+    
+    /* Hero Contact Section */
+    .hero-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    
+    .contact-info h1 {
+      font-size: 7rem;
+      color: #0080ff;
+      margin-bottom: 10px;
+      font-weight: bold;
+      line-height: 1;
+    }
+    
+    .contact-info h2 {
+      font-size: 7rem;
+      color: #0080ff;
+      margin-bottom: 20px;
+      font-weight: bold;
+      line-height: 1;
+    }
+    
+    .contact-info p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    /* Message Form Styles */
+    .message-form-container {
+      background-color: #ecf0f3;
+      border-radius: 20px;
+      box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), 
+                 -8px -8px 16px rgba(255, 255, 255, 0.8);
+      padding: 30px;
+    }
+    
+    .message-form-container h3 {
+      font-size: 1.5rem;
+      color: #0080ff;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    
+    .form-group label .required {
+      color: #0080ff;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background-color: #ecf0f3;
+      color: #555;
+      font-size: 0.9rem;
+      box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+                  inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+                  inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+    }
+    
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .send-btn {
+      width: 100%;
+      background-color: #0080ff;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                 -4px -4px 8px rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .send-btn:hover {
+      background-color: #0070e0;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), 
+                 -2px -2px 4px rgba(255, 255, 255, 0.8);
+    }
+    
+    .send-btn:active {
+      background-color: #0060c0;
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+                  inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+    }
+    
+    .wave-decoration {
+      margin: 20px 0;
+      height: 60px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ecf0f3' opacity='0.2'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+    }
+    
+    .offices-container {
+      background-color: #ecf0f3;
+      border-radius: 20px;
+      box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.1), 
+                 -8px -8px 16px rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .offices-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .offices-info h2 {
+      font-size: 4rem;
+      color: #0080ff;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    .office-nav {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background-color: #ecf0f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                 -4px -4px 8px rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-btn:hover {
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), 
+                 -2px -2px 4px rgba(255, 255, 255, 0.8);
+    }
+    
+    .nav-btn:active {
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.1),
+                  inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+    }
+    
+    .location-card {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .image-placeholder {
+      background-color: #ecf0f3;
+      border-radius: 10px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+                  inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .office-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+    
+    .placeholder-x {
+      position: absolute;
+      font-size: 5rem;
+      color: #aaa;
+      z-index: 1;
+    }
+    
+    .address-card {
+      background-color: #ecf0f3;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+                  inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+    }
+    
+    .address-card h3 {
+      font-size: 1.2rem;
+      color: #0080ff;
+      margin-bottom: 10px;
+    }
+    
+    .address-card p {
+      color: #555;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
+    
+    .address-card .email {
+      display: flex;
+      align-items: center;
+      color: #0080ff;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    
+    .arrow-right {
+      margin-left: 5px;
+    }
+    
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    
+    .footer a {
+      color: #555;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    
+    @media (max-width: 992px) {
+      .hero-contact {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .offices-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+    }
