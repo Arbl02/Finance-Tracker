@@ -39,7 +39,7 @@
     const officeZip = document.getElementById('officeZip');
     const officeImage = document.getElementById('officeImage');
     
-    // Current office index
+    // current office index
     let currentOffice = 0;
     
     // para update office information
@@ -60,7 +60,7 @@
         officeZip.textContent = office.zip;
         officeImage.src = office.image;
         
-        // Fade in ika click
+        // mo fade in ika click
         officeCity.style.opacity = 1;
         officeEmail.style.opacity = 1;
         officeStreet.style.opacity = 1;
