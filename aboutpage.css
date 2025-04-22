@@ -44,6 +44,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 50px;
 }
 
 .neomorphic-button:hover {
@@ -131,15 +132,15 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3.2rem;
+    font-size: 5rem;
     line-height: 1.2;
-    margin-bottom: 1.5rem;
+    margin-bottom: 4rem;
     color: rgb(0, 98, 196);
 }
 
 .hero-image {
     flex: 1;
-    padding: 20px;
+    padding: 0rem;
 }
 
 .hero-image img {
@@ -274,95 +275,6 @@ nav {
     font-size: 0.9rem;
 }
 
-/* Offices section */
-.offices-section {
-    padding: 5rem 0;
-    background-color: #0d4f71;
-    color: white;
-    border-radius: 30px;
-    margin: 3rem 0;
-}
-
-.offices-container {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.offices-content {
-    flex: 1;
-}
-
-.offices-image {
-    flex: 1;
-}
-
-.offices-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-}
-
-.offices-title {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-}
-
-.office-card {
-    background-color: white;
-    color: #1a365d;
-    border-radius: 16px;
-    padding: 2rem;
-    margin-top: 2rem;
-    max-width: 400px;
-}
-
-.office-location {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.office-description {
-    color: #4a5568;
-    margin-bottom: 1.5rem;
-}
-
-.office-email {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #0d4f71;
-    text-decoration: none;
-    margin-bottom: 1rem;
-}
-
-.office-address {
-    color: #4a5568;
-}
-
-.office-navigation {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.nav-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.nav-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
 
 /* Team section */
 .team-section {
