@@ -1,114 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpendSense - Contact Us</title>
-  <link rel="stylesheet" href="/css/contact-us.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendSense</title>
+    <link rel="stylesheet" href="../css/contactUs.css">
+    <link rel="icon" href="../image/SpendSenseLogo.png" type="image/png+xml">
+
 </head>
 <body>
-  <div class="container">
-    <nav class="nav-container">
-      <div class="logo">SpendSense</div>
-      <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Pricing</a>
-      </div>
-      <button class="login-btn">Get Started →</button>
-    </nav>
-    
-    <div class="main-content">
-      <!-- Hero Contact Section -->
-      <div class="hero-contact">
-        <div class="contact-info">
-          <h1>Contact</h1>
-          <h2>Us</h2>
-          <p>Have questions about our services? Want to learn more about how SpendSense can help you manage your finances? Reach out to us today by filling out the form and our team will be happy to assist you.</p>
-          <h4>Business Hours:</h4>
-          <ul>Monday to Friday: 7 a.m - 7p.m</ul>
-          <ul>Saturday: 8 a.m - 5 p.m</ul>
-          <ul>Sunday: 9 a.m - 3p.m</ul>
-          <br>
-          <h4>You can also contact us on this platforms</h4>
-          <p>Facebook icon/btn, Instagram Icon/btn, Phone Icon/btn, Twitter icon/bts... 2 more </p>
-          <br>
+    <div class="container">
+      <nav class="nav-container">
+        <div class="logo">SpendSense</div>
+        <div class="nav-links">
+          <a href="../html/homepage.html">Home</a>
+          <a href="../html/aboutpage.html">About</a>
+          <a href="../html/contactUs.html">Contact</a>
+          <a href="../html/price.html">Pricing</a>
+        </div>
+        <button class="login-btn">Get Started →</button>
+      </nav>
+      
+      <div class="main-content">
+        <!-- Hero Contact Section -->
+        <div class="hero-contact">
+          <div class="contact-info">
+            <h1>Contact</h1>
+            <h2>Us</h2>
+            <p>Have questions about our services? Want to learn more about how SpendSense can help you manage your finances? Reach out to us today by filling out the form and our team will be happy to assist you.</p>
+            <h4>Business Hours:</h4>
+            <ul>Monday to Friday: 7 a.m - 7p.m</ul>
+            <ul>Saturday: 8 a.m - 5 p.m</ul>
+            <ul>Sunday: 9 a.m - 3p.m</ul>
+            <br>
+            <h4>You can also contact us on this platforms</h4>
+            <p>Facebook icon/btn, Instagram Icon/btn, Phone Icon/btn, Twitter icon/bts... 2 more </p>
+            <br>
+          </div>
+          
+          
+          <div class="message-form-container">
+            <h3>Send Us a Message</h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label>Your Name <span class="required">*</span></label>
+                <input type="text" class="form-control" placeholder="Your full name" required>
+              </div>
+              
+              <div class="form-group">
+                <label>Email <span class="required">*</span></label>
+                <input type="email" class="form-control" placeholder="Your email address" required>
+              </div>
+              
+              <div class="form-group">
+                <label>Subject <span class="required">*</span></label>
+                <input type="text" class="form-control" placeholder="What is this regarding?" required>
+              </div>
+              
+              <div class="form-group">
+                <label>Message <span class="required">*</span></label>
+                <textarea class="form-control" placeholder="Your message..." required></textarea>
+              </div>
+              
+              <button type="submit" class="send-btn">Send Message</button>
+            </form>
+          </div>
         </div>
         
-        
-        <div class="message-form-container">
-          <h3>Send Us a Message</h3>
-          <form id="contactForm">
-            <div class="form-group">
-              <label>Your Name <span class="required">*</span></label>
-              <input type="text" class="form-control" placeholder="Your full name" required>
+        <div class="offices-container">
+          <div class="offices-info">
+            <h2>Come and visit our offices around the globe</h2>
+            <p>We'd love to meet you in person and show you around our workspace. Feel free to stop by during business hours to discuss your financial needs.</p>
+            <div class="wave-decoration" style="height: 40px;"></div>
+            <div class="office-nav">
+              <button class="nav-btn" id="prevBtn">
+                ←
+              </button>
+              <button class="nav-btn" id="nextBtn">
+                →
+              </button>
             </div>
-            
-            <div class="form-group">
-              <label>Email <span class="required">*</span></label>
-              <input type="email" class="form-control" placeholder="Your email address" required>
+          </div>
+          
+          <div class="location-card">
+            <div class="image-placeholder">
+              <span class="placeholder-x"></span>
+              <img class="office-image" id="officeImage" src="/image/mactan.jpg" alt="Office location">
             </div>
-            
-            <div class="form-group">
-              <label>Subject <span class="required">*</span></label>
-              <input type="text" class="form-control" placeholder="What is this regarding?" required>
+            <div class="address-card">
+              <h3 id="officeCity">Cebu Business Park, PH</h3>
+              <p id="officeEmail">ph@spendsense.com</p>
+              <p id="officeStreet"> Archbishop Reyes Avenue, Cebu Business Park</p>s
+              <p id="officeZip">Cebu City 6000</p>
+              <div class="email">
+                Get Directions <span class="arrow-right">→</span>
+              </div>
             </div>
-            
-            <div class="form-group">
-              <label>Message <span class="required">*</span></label>
-              <textarea class="form-control" placeholder="Your message..." required></textarea>
-            </div>
-            
-            <button type="submit" class="send-btn">Send Message</button>
-          </form>
+          </div>
         </div>
       </div>
       
-      <div class="offices-container">
-        <div class="offices-info">
-          <h2>Come and Visit our offices</h2>
-          <p>We'd love to meet you in person and show you around our workspace. Feel free to stop by during business hours to discuss your financial needs.</p>
-          <div class="wave-decoration" style="height: 40px;"></div>
-          <div class="office-nav">
-            <button class="nav-btn" id="prevBtn">
-              ←
-            </button>
-            <button class="nav-btn" id="nextBtn">
-              →
-            </button>
-          </div>
+      <footer class="footer">
+        <div>© 2025 SpendSense. All rights reserved</div>
+        <div>
+            <a href="../html/homepage.html">Home</a>
+            <a href="../html/aboutpage.html">About</a>
+            <a href="../html/contactUs.html">Contact</a>
+            <a href="../html/price.html">Pricing</a>
         </div>
-        
-        <div class="location-card">
-          <div class="image-placeholder">
-            <span class="placeholder-x"></span>
-            <img class="office-image" id="officeImage" src="/image/call.jpg" alt="Office location">
-          </div>
-          <div class="address-card">
-            <h3 id="officeCity">San Francisco, CA</h3>
-            <p id="officeEmail">sf@spendsense.com</p>
-            <p id="officeStreet">545 Hayes St, San Francisco,</p>
-            <p id="officeZip">CA 94102</p>
-            <div class="email">
-              Get Directions <span class="arrow-right">→</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      </footer>
     </div>
-    
-    <footer class="footer">
-      <div>© 2025 SpendSense. All rights reserved</div>
-      <div>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Pricing</a>
-        <a href="#">Get Started</a>
-      </div>
-    </footer>
-  </div>
-
-  <script src="/javascript/contact-us.js"></script>
-</body>
-</html>
+  
+    <script src="/javascript/contactUs.js"></script>
+  </body>
+  </html>
+       
