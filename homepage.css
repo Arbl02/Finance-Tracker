@@ -21,7 +21,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 85%;
-  position: fixed;
+  position: absolute;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
@@ -73,8 +73,6 @@ body {
   align-items: center;
   text-decoration: none;
 }
-
-
 
 /* Get started button sa navbar */
 .get-started {
@@ -190,28 +188,6 @@ input:checked + .slider::before {
   transform: translateX(30px);
   background: white;
 }
-/* banks scrolling effect */
-.partner-logos {
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
-  padding: 10px 0;
-  position: relative;
-}
-
-.scrolling-wrapper {
-  display: flex;
-  width: max-content;
-  animation: scroll 10s linear infinite;
-}
-
-.partner {
-  padding: 10px 30px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #333;
-}
-/* Katong features */
 
 
 
@@ -245,7 +221,7 @@ input:checked + .slider::before {
 }
 
 .headline h1 {
-  font-size: 50px;
+  font-size: 90px;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 25px;
@@ -259,20 +235,17 @@ input:checked + .slider::before {
 }
 
 .hero-image {
-  flex: 1;
+  height: 200%;
+  width: 200%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .dashboard-preview {
-  width: 100%;
-  max-width: 550px;
-  height: 400px;
-  background: #ecf0f3;
-  border-radius: 20px;
-  box-shadow: 15px 15px 30px #d1d9e6, -15px -15px 30px #ffffff;
-  overflow: hidden;
+  margin: 0px auto;
+  padding: 15px;
+  margin-left: 0px;
   transition: transform 0.3s ease;
 }
 
@@ -281,11 +254,11 @@ input:checked + .slider::before {
 }
 
 .dashboard-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
+  width: 120%;
+  height: auto;
+  border-radius: 15px;
 }
+
 
 /* Partners Section */
 .partners {
@@ -305,19 +278,66 @@ input:checked + .slider::before {
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
 }
 
-.partner {
-  font-size: 16px;
-  font-weight: 600;
-  color: #777;
-  opacity: 0.7;
-  transition: opacity 0.3s;
+/* For Logo slider transition ni */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
-.partner:hover {
-  opacity: 1;
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  white-space: nowrap;
+  position: relative;
 }
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #ecf0f3);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #ecf0f3);
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+  height: 500px;
+  margin: 0 40px;
+  max-height: 120px; 
+  max-width: 500%;
+}
+
 
 /* Features Section */
 .features {
@@ -487,7 +507,7 @@ input:checked + .slider::before {
 
 .step-image {
   width: 100%;
-  max-width: 350px;
+  max-width: 300%;
   margin: 0 auto;
   background: #ecf0f3;
   border-radius: 20px;
@@ -943,3 +963,20 @@ h1 {
   font-size: 14px;
   color: #666;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #555;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+
+
