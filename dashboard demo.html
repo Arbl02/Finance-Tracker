@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendSense Demo Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard-demo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <!-- Chart source library sa graphs(dont remove mawala ang charts/ still need improvement) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="fas fa-wallet"></i>
+                <span>SpendSense</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#"><i class="fas fa-th-large"></i> <span>Dashboard</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> <span>Analysis</span></a></li>
+                <li><a href="#"><i class="fas fa-credit-card"></i> <span>Wallets</span></a></li>
+                <li><a href="#"><i class="fas fa-exchange-alt"></i> <span>Transactions</span></a></li>
+                <li><a href="#"><i class="fas fa-address-book"></i> <span>Contact</span></a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> <span>Help Center</span></a></li>
+            </ul>
+            <div class="premium-card">
+                <h3>Premium Card</h3>
+                <p>Get more benefits by using premium cards</p>
+                <button class="premium-btn">Upgrade Now</button>
+            </div>
+        </div>
+        <!-- main section -->
+        <div class="main-content">
+            <div class="header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-info">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user">
+                        <img src="../image/user.png" alt="User">
+                        <div class="user-details">
+                            <span class="name">Cardo Dalisay Smith</span>
+                            <span class="email">sample@example.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- dashboard section  -->
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Dashboard Overview</h1>
+                <div class="period-filter">
+                    <select id="period-selector">
+                        <option>This Month</option>
+                        <option>Last Month</option>
+                        <option>Last 3 Months</option>
+                        <option>This Year</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- accounts section  -->
+            <div class="cards-container">
+                <div class="account-card">
+                    <span class="card-type">Main Account</span>
+                    <h3 class="card-balance">₱75,420.00</h3>
+                    <span class="card-number">**** **** **** 3456</span>
+                    <div class="card-icon"><i class="fas fa-credit-card"></i></div>
+                    <div class="card-chip"><i class="fas fa-microchip"></i></div>
+                </div>
+                <div class="account-card purple">
+                    <span class="card-type">Savings Account</span>
+                    <h3 class="card-balance">₱50,492.00</h3>
+                    <span class="card-number">**** **** **** 8732</span>
+                    <div class="card-icon"><i class="fas fa-piggy-bank"></i></div>
+                    <div class="card-chip"><i class="fas fa-microchip"></i></div>
+                </div>
+            </div>
+
+            <!-- summary section  -->
+            <div class="summary-boxes">
+                <div class="summary-box">
+                    <div class="summary-box-header">
+                        <div class="summary-icon income-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="summary-box-title">Total Income</div>
+                    </div>
+                    <div class="summary-box-amount income-total">₱7,382.00</div>
+                    <div class="summary-box-change income-change positive-change">+5.2% last month</div>
+                </div>
+                <div class="summary-box">
+                    <div class="summary-box-header">
+                        <div class="summary-icon expense-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="summary-box-title">Total Expenses</div>
+                    </div>
+                    <div class="summary-box-amount expense-total">₱6,138.00</div>
+                    <div class="summary-box-change expense-change negative-change">-4.8% last month</div>
+                </div>
+            </div>
+
+            <!-- action buttons section babaw sa line chart -->
+            <div class="action-buttons">
+                <button class="action-button" data-action="Transfer">
+                    <i class="fas fa-exchange-alt"></i>
+                    Transfer Money
+                </button>
+                <button class="action-button" data-action="Payment">
+                    <i class="fas fa-paper-plane"></i>
+                    Make Payment
+                </button>
+                <button class="action-button" data-action="Report">
+                    <i class="fas fa-file-alt"></i>
+                    Generate Report
+                </button>
+            </div>
+
+            <!-- charts ug stats section  -->
+            <div class="cards-container">
+                <!-- monthly overview chart section  -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <span>Monthly Overview</span>
+                        <span class="period">Last 12 months</span>
+                    </div>
+                    <div class="card-subtitle">Income vs Expenses</div>
+                    <div class="line-chart-container">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-item">
+                            <div class="summary-value">₱125,912</div>
+                            <div class="summary-label">Total Balance</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱98,246</div>
+                            <div class="summary-label">Total Income</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱79,510</div>
+                            <div class="summary-label">Total Expenses</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- expense breakdown section  -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <span>Expense Breakdown</span>
+                        <span class="period">This month</span>
+                    </div>
+                    <div class="card-subtitle">Where your money goes</div>
+                    <div class="pie-chart-container">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                    <div class="pie-legend"></div>
+                </div>
+            </div>
+
+            <!-- weekly spending & calc section  -->
+            <div class="cards-container">
+                <!-- Weekly Spending section -->
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <span>Weekly Spending</span>
+                        <span class="period">This week</span>
+                    </div>
+                    <div class="card-subtitle">Day by day breakdown</div>
+                    <div class="bar-chart-container">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="summary-row">
+                        <div class="summary-item">
+                            <div class="summary-value">₱125,912</div>
+                            <div class="summary-label">Total Balance</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱98,246</div>
+                            <div class="summary-label">Total Income</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">₱79,510</div>
+                            <div class="summary-label">Total Expenses</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-title">
+                        <span>Recent Transactions</span>
+                        <span class="period">Last 7 days</span>
+                    </div>
+                    <div class="card-subtitle">View your latest income and expenses</div>
+                    
+                    <div class="transaction-list">
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">Restaurant</div>
+                                    <div class="transaction-date">Apr 16, 2025</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">-₱452.00</div>
+                        </div>
+                        
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">Salary</div>
+                                    <div class="transaction-date">Apr 15, 2025</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount income">+₱12,700.00</div>
+                        </div>
+                        
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">Grocery Store</div>
+                                    <div class="transaction-date">Apr 14, 2025</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">-₱1,345.00</div>
+                        </div>
+                        
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">Electricity Bill</div>
+                                    <div class="transaction-date">Apr 13, 2025</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">-₱835.00</div>
+                        </div>
+                        
+                        <div class="transaction-item">
+                            <div class="transaction-info">
+                                <div class="transaction-icon">
+                                    <i class="fas fa-tshirt"></i>
+                                </div>
+                                <div class="transaction-details">
+                                    <div class="transaction-title">Clothing Store</div>
+                                    <div class="transaction-date">Apr 10, 2025</div>
+                                </div>
+                            </div>
+                            <div class="transaction-amount">-₱699.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator -->
+                <div class="calculator">
+                    <div class="calculator-display">0</div>
+                    <div class="calculator-buttons">
+                        <button class="calc-btn">C</button>
+                        <button class="calc-btn">←</button>
+                        <button class="calc-btn operator">%</button>
+                        <button class="calc-btn operator">÷</button>
+                        <button class="calc-btn">7</button>
+                        <button class="calc-btn">8</button>
+                        <button class="calc-btn">9</button>
+                        <button class="calc-btn operator">×</button>
+                        <button class="calc-btn">4</button>
+                        <button class="calc-btn">5</button>
+                        <button class="calc-btn">6</button>
+                        <button class="calc-btn operator">-</button>
+                        <button class="calc-btn">1</button>
+                        <button class="calc-btn">2</button>
+                        <button class="calc-btn">3</button>
+                        <button class="calc-btn operator">+</button>
+                        <button class="calc-btn">0</button>
+                        <button class="calc-btn">.</button>
+                        <button class="calc-btn equals">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="script.js"></script>
+    <script>
+    // Initialize charts when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sample data for charts
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const incomeData = [6500, 5900, 8000, 8100, 9600, 7800, 9000, 10500, 11200, 9800, 12500, 14000];
+        const expenseData = [5200, 5500, 4700, 6300, 7100, 7000, 8200, 7600, 8400, 7500, 8200, 9100];
+
+        // function sa calculator
+        const display = document.querySelector('.calculator-display');
+        const buttons = document.querySelectorAll('.calc-btn');
+
+        let current = '';
+        let previous = '';
+        let op = null;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+            const value = button.textContent;
+
+            if (value === 'C') {
+                current = '';
+                previous = '';
+                op = null;
+            } else if (value === '←') {
+                current = current.slice(0, -1);
+            } else if (value === '=') {
+                if (previous && current && op) {
+                console.log(`First Number: ${previous}, Second Number: ${current}, Operator Used: ${op}`);
+                current = calculate(parseFloat(previous), parseFloat(current), op).toString();
+                previous = '';
+                op = null;
+                }
+            } else if (button.classList.contains('operator')) {
+                if (current) {
+                if (previous) {
+                    console.log(`First Number: ${previous}, Second Number: ${current}, Operator Used: ${op}`);
+                    current = calculate(parseFloat(previous), parseFloat(current), op).toString();
+                }
+                op = value;
+                previous = current;
+                current = '';
+                }
+            } else {
+                current += value;
+            }
+
+            display.textContent = current || '0';
+            console.log(`Current Input: ${current}`);
+            });
+        });
+
+        function calculate(num1, num2, operator) {
+            switch (operator) {
+            case '+': return num1 + num2;
+            case '-': return num1 - num2;
+            case '×': return num1 * num2;
+            case '÷': return num2 !== 0 ? num1 / num2 : 'Error';
+            case '%': return num1 % num2;
+            default: return 0;
+            }
+        }
+        
+        // Line Chart - Monthly Overview
+        const lineChartCtx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(lineChartCtx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Income',
+                        data: incomeData,
+                        borderColor: '#9f6eff',
+                        backgroundColor: 'rgba(159, 110, 255, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Expenses',
+                        data: expenseData,
+                        borderColor: '#ff6384',
+                        backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 12,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Pie Chart - Expense Breakdown
+        const pieChartCtx = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(pieChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Rent', 'Groceries', 'Transportation', 'Utilities', 'Entertainment', 'Others'],
+                datasets: [{
+                    data: [35, 20, 15, 12, 10, 8],
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 12,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Bar Chart - Weekly Spending
+        const barChartCtx = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barChartCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Daily Spending',
+                    data: [570, 699, 967, 689, 1345, 835, 436],
+                    backgroundColor: [
+                        'rgba(159, 110, 255, 0.7)',
+                        'rgba(159, 110, 255, 0.7)',
+                        'rgba(159, 110, 255, 0.7)',
+                        'rgba(159, 110, 255, 0.7)',
+                        'rgba(255, 99, 132, 0.7)', // Highlight Friday
+                        'rgba(159, 110, 255, 0.7)',
+                        'rgba(159, 110, 255, 0.7)'
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Update pie chart legend
+        const pieData = [
+            { label: 'Rent', value: 35, color: '#FF6384' },
+            { label: 'Groceries', value: 20, color: '#36A2EB' },
+            { label: 'Transportation', value: 15, color: '#FFCE56' },
+            { label: 'Utilities', value: 12, color: '#4BC0C0' },
+            { label: 'Entertainment', value: 10, color: '#9966FF' },
+            { label: 'Others', value: 8, color: '#FF9F40' }
+        ];
+
+        const legend = document.querySelector('.pie-legend');
+        if (legend) {
+            pieData.forEach(item => {
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-item';
+                
+                legendItem.innerHTML = `
+                    <div class="legend-color" style="background-color: ${item.color};"></div>
+                    <span>${item.label}</span>
+                    <span class="legend-value">${item.value}%</span>
+                `;
+                
+                legend.appendChild(legendItem);
+            });
+        }
+    });
+    </script>
+</body>
+</html>
