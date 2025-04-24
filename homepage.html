@@ -6,6 +6,7 @@
     <title>SpendSense</title>
     <link rel="stylesheet" href="../css/homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo.png" sizes="16x16" />
 </head>
 <body>
 
@@ -24,32 +25,33 @@
             </div>
             <div class="hero-image">
                 <div class="dashboard-preview">
-                    <img src="" alt="Sample Dashboard Preview">
+                    <!-- ang size intawn atimana -->
+                    <img src="../image/demoV2.svg" height="200" width="300" alt="Sample Dashboard Preview">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Partnerships Section / need to chage this to logos -->
+    <!-- Partnerships Section with logos na(need )-->
     <section class="partners">
         <p>Loved and trusted by the Philippines and worldwide</p>
         <div class="partner-logos">
-            <div class="scrolling-wrapper">
-                <div class="partner">BPI</div>
-                <div class="partner">BDO</div>
-                <div class="partner">METROBANK</div>
-                <div class="partner">ATOME</div>
-                <div class="partner">PAYPAL</div>
-                <div class="partner">WISE</div>
-    
+            <div class="logos">
+                <div class="logos-slide">
+                  <img src="../image/bpi-black.png" />
+                  <img src="../image/atomeLogo.png" />
+                  <img src="../image/metro.png" />
+                  <img src="../image/paypal.png" />
+                  
+                </div>
+                
                 <!-- Duplicate para sa smooth looping -->
-                <div class="partner">BPI</div>
-                <div class="partner">BDO</div>
-                <div class="partner">METROBANK</div>
-                <div class="partner">ATOME</div>
-                <div class="partner">PAYPAL</div>
-                <div class="partner">WISE</div>
-            </div>
+                <div class="logos-slide">
+                    <img src="../image/bpi-black.png" />
+                    <img src="../image/atomeLogo.png" />
+                    <img src="../image/metro.png" />
+                    <img src="../image/paypal.png" />
+                </div>
         </div>
     </section>
 
@@ -341,34 +343,38 @@
             </div>
         </div>
         <div class="step-image">
-            <img src="app-screenshot.png" alt="App Screenshot">
+            <img src="../image/output.png" alt="App Screenshot">
         </div>
     </section>
 
     <!-- Navbar (fixed na) -->
     <nav class="navbar">
         <div class="logo">
-            <i class="fas fa-circle"></i> SpendSense
+            <i class="fas fa-wallet"></i> SpendSense
         </div>
         <ul class="nav-links">
             <li><a href="../html/homepage.html">Home</a></li>
             <li><a href="../html/aboutpage.html">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="../html/contactUs.html">Contact</a></li>
             <li class="dropdown">
-                <a href="#">Pricing <i class="fas fa-chevron-down"></i></a>
+                <a href="../html/price.html">Pricing <i class="fas fa-chevron-down"></i></a>
             </li>
         </ul>
         <div class="right-section">
             <a href="../html/signup.html">
                 <button class="get-started">Get started <i class="fas fa-arrow-right"></i></button>
             </a>
-            
         </div>
-        
     </nav>
-
-    
-
     <!--  should add pa details about sa homepage after mahuman na tanan ang main dashboards and mga uban pang features since you need pictures-->
+    <footer class="footer">
+        <div>© 2025 SpendSense All rights reserved</div>
+        <div>
+          <a href="../html/homepage.html">Home</a>
+          <a href="../html/aboutpage.html">About</a>
+          <a href="../html/contact-us.html">Contact</a>
+          <a href="../html/signup.html">Get Started</a>
+        </div>
+      </footer>
 </body>
 </html>
