@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendSense - Smart Financial Tracking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0080ff;
+            --background-color: #ecf0f3;
+            --text-color: #333;
+            --shadow-dark: rgba(0, 0, 0, 0.15);
+            --shadow-light: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: var(--background-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px var(--shadow-dark);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-left: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+        }
+
+        .cta-button:active {
+            transform: translateY(1px);
+            box-shadow: 2px 2px 5px var(--shadow-dark), -2px -2px 5px var(--shadow-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--text-color);
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .secondary-button {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .secondary-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            height: 400px;
+        }
+
+        .hero-image-neumorphic {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            background-color: var(--background-color);
+            box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+            overflow: hidden;
+        }
+
+        .hero-image-inner {
+            width: 90%;
+            height: 90%;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #d4d9dd, #f7fbff);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .dashboard-mockup {
+            width: 95%;
+            height: 95%;
+            border-radius: 15px;
+            background-color: var(--background-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+        }
+
+        .mock-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .mock-content {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mock-widget {
+            background: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 3px 3px 6px var(--shadow-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mock-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 128, 255, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mock-text {
+            flex: 1;
+            font-size: 0.8rem;
+        }
+
+        .mock-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: var(--text-color);
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--background-color);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+            transition: all 0.4s ease;
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .feature-card.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .feature-desc {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .feature-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .feature-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Habit Tracking Section */
+        .habit-tracking {
+            padding: 100px 0;
+            background-color: var(--background-color);
+        }
+
+        .steps-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .steps-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: #dde1e7;
+            transform: translateX(-50%);
+            box-shadow: inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light);
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 100px;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+            transform: translateX(50px);
+        }
+
+        .step.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .step-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: var(--background-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+            z-index: 1;
+        }
+
+        .step-content {
+            width: 45%;
+            background-color: var(--background-color);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .step-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .step-desc {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--background-color);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+            transition: all 0.3s ease;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .stat-card.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+            box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background-color: var(--background-color);
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--background-color);
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .cta-container.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .cta-desc {
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 0 20px;
+            background-color: var(--background-color);
+            box-shadow: 0 -2px 10px var(--shadow-dark);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-2px);
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #dde1e7;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 80px;
+            }
+
+            .step:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .step-content {
+                width: 80%;
+                margin-top: 40px;
+            }
+
+            .step-number {
+                top: -25px;
+            }
+
+            .steps-line {
+                left: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-container {
+                padding: 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        /* Custom Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-text">SpendSense</span>
+                </div>
+                <nav class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">Features</a>
+                    <a href="#">Habits</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">About</a>
+                </nav>
+                <button class="cta-button">Sign Up Free</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Take Control of Your <span>Financial Future</span></h1>
+                    <p class="hero-subtitle">Track, analyze, and improve your spending habits with our intuitive financial tracker. Join thousands building better financial habits today.</p>
+                    <div class="hero-buttons">
+                        <button class="cta-button">Get Started Now</button>
+                        <button class="secondary-button">See How It Works</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-neumorphic float-animation">
+                        <div class="hero-image-inner">
+                            <div class="dashboard-mockup">
+                                <div class="mock-header">SpendSense Dashboard</div>
+                                <div class="mock-content">
+                                    <div class="mock-widget">
+                                        <div class="mock-icon"><i class="fas fa-chart-line"></i></div>
+                                        <div class="mock-text">Monthly Savings</div>
+                                        <div class="mock-value">$432.87</div>
+                                    </div>
+                                    <div class="mock-widget">
+                                        <div class="mock-icon"><i class="fas fa-coffee"></i></div>
+                                        <div class="mock-text">Daily Expenses</div>
+                                        <div class="mock-value">$24.50</div>
+                                    </div>
+                                    <div class="mock-widget">
+                                        <div class="mock-icon"><i class="fas fa-bullseye"></i></div>
+                                        <div class="mock-text">Budget Goals</div>
+                                        <div class="mock-value">78% Complete</div>
+                                    </div>
+                                    <div class="mock-widget">
+                                        <div class="mock-icon"><i class="fas fa-piggy-bank"></i></div>
+                                        <div class="mock-text">Savings Goal</div>
+                                        <div class="mock-value">$2,450 / $5,000</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Smart <span>Features</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="feature-title">Spending Analytics</h3>
+                    <p class="feature-desc">Visualize your spending patterns with intuitive charts and graphs that help you understand where your money goes.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="feature-title">Goal Tracking</h3>
+                    <p class="feature-desc">Set financial goals and track your progress over time. Celebrate your wins and stay motivated.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="feature-title">Smart Alerts</h3>
+                    <p class="feature-desc">Receive notifications about unusual spending, bill reminders, and budget limits to stay on track.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Habit Formation</h3>
+                    <p class="feature-desc">Build sustainable financial habits with our guided system and daily tracking tools.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Secure Storage</h3>
+                    <p class="feature-desc">Your financial data is encrypted and secure, giving you peace of mind while managing your money.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile Access</h3>
+                    <p class="feature-desc">Track your finances on the go with our mobile app, available for iOS and Android devices.</p>
+                    <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="habit-tracking" id="habits">
+        <div class="container">
+            <h2 class="section-title">Build Better Financial <span>Habits</span></h2>
+            <div class="steps-container">
+                <div class="steps-line"></div>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3 class="step-title">Track Daily Expenses</h3>
+                        <p class="step-desc">Start by recording every expense, no matter how small. This awareness is the foundation of good financial habits. Use our quick-entry system to make it effortless.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3 class="step-title">Categorize & Analyze</h3>
+                        <p class="step-desc">Our smart system automatically categorizes your spending. Review your patterns weekly to identify areas where you can cut back without sacrificing quality of life.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="step-title">Set Realistic Goals</h3>
+                        <p class="step-desc">Create specific, measurable financial goals based on your spending analysis. Whether saving for a vacation or paying down debt, clear goals drive progress.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="step-title">Build Daily Habits</h3>
+                        <p class="step-desc">Use our habit tracker to establish daily financial routines. Simple actions like checking your balance, reviewing recent transactions, or setting aside small amounts add up over time.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="step-title">Measure Your Progress</h3>
+                        <p class="step-desc">Watch your financial health improve with our tracking tools. Celebrate milestones and adjust your strategy based on real results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats" id="stats">
+        <div class="container">
+            <h2 class="section-title">Why Users <span>Trust Us</span></h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">25K+</div>
+                    <div class="stat-text">Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="stat-number">$2.3M</div>
+                    <div class="stat-text">Total Savings</div>
+                </div>
+<div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="stat-number">$2.3M</div>
+                    <div class="stat-text">Total Savings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">32%</div>
+                    <div class="stat-text">Avg. Budget Improvement</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-number">4.8</div>
+                    <div class="stat-text">App Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta-container">
+                <h2 class="cta-title">Start Your Financial Journey Today</h2>
+                <p class="cta-desc">Join thousands of people who have transformed their financial habits and achieved their money goals with SpendSense.</p>
+                <div class="cta-buttons">
+                    <button class="cta-button">Sign Up Free</button>
+                    <button class="secondary-button">Watch Demo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SpendSense</h3>
+                    <p>Take control of your financial future with our intuitive tracking and habit-building tools.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">Expense Tracking</a></li>
+                        <li><a href="#">Budget Planning</a></li>
+                        <li><a href="#">Goal Setting</a></li>
+                        <li><a href="#">Habit Formation</a></li>
+                        <li><a href="#">Financial Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SpendSense. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animation on Scroll
+        function animateOnScroll() {
+            const featureCards = document.querySelectorAll('.feature-card');
+            const steps = document.querySelectorAll('.step');
+            const statCards = document.querySelectorAll('.stat-card');
+            const ctaContainer = document.querySelector('.cta-container');
+            
+            const options = {
+                threshold: 0.2
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            featureCards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            steps.forEach(step => {
+                observer.observe(step);
+            });
+            
+            statCards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            observer.observe(ctaContainer);
+        }
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Hover Effect for Steps
+        const steps = document.querySelectorAll('.step-content');
+        steps.forEach(step => {
+            step.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+                this.style.boxShadow = '8px 8px 16px rgba(0, 0, 0, 0.15), -8px -8px 16px rgba(255, 255, 255, 0.8)';
+            });
+            
+            step.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '6px 6px 12px rgba(0, 0, 0, 0.15), -6px -6px 12px rgba(255, 255, 255, 0.8)';
+            });
+        });
+        
+        // CTA Button Animation
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '5px 5px 10px rgba(0, 0, 0, 0.15), -5px -5px 10px rgba(255, 255, 255, 0.8)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.8)';
+            });
+        });
+        
+        // Mobile Navigation Toggle
+        function createMobileNav() {
+            const header = document.querySelector('header');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Create hamburger menu
+            const hamburger = document.createElement('div');
+            hamburger.className = 'hamburger';
+            hamburger.innerHTML = '<span></span><span></span><span></span>';
+            
+            // Add styles
+            const style = document.createElement('style');
+            style.textContent = `
+                .hamburger {
+                    display: none;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 30px;
+                    height: 22px;
+                    cursor: pointer;
+                }
+                
+                .hamburger span {
+                    width: 100%;
+                    height: 3px;
+                    background-color: var(--primary-color);
+                    border-radius: 3px;
+                    transition: all 0.3s ease;
+                }
+                
+                @media (max-width: 768px) {
+                    .hamburger {
+                        display: flex;
+                    }
+                    
+                    .nav-links {
+                        position: absolute;
+                        top: 70px;
+                        left: 0;
+                        right: 0;
+                        background-color: var(--background-color);
+                        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                        padding: 20px;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 20px;
+                        transform: translateY(-200%);
+                        transition: transform 0.3s ease;
+                        z-index: 999;
+                    }
+                    
+                    .nav-links.active {
+                        display: flex;
+                        transform: translateY(0);
+                    }
+                    
+                    .hamburger.active span:nth-child(1) {
+                        transform: translateY(9px) rotate(45deg);
+                    }
+                    
+                    .hamburger.active span:nth-child(2) {
+                        opacity: 0;
+                    }
+                    
+                    .hamburger.active span:nth-child(3) {
+                        transform: translateY(-9px) rotate(-45deg);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Insert hamburger before the CTA button
+            const ctaButton = document.querySelector('header .cta-button');
+            ctaButton.parentNode.insertBefore(hamburger, ctaButton);
+            
+            // Toggle menu on click
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            createMobileNav();
+            
+            // Add minor delay for better loading experience
+            setTimeout(() => {
+                document.querySelector('.hero-image-neumorphic').style.opacity = '1';
+            }, 300);
+        });
+        
+        // Progress animation for habit tracking steps
+        function trackHabitStepProgress() {
+            const steps = document.querySelectorAll('.step');
+            let currentStep = 0;
+            
+            // Highlight active step on page load based on scroll position
+            updateActiveStep();
+            
+            // Update active step on scroll
+            window.addEventListener('scroll', updateActiveStep);
+            
+            function updateActiveStep() {
+                for (let i = 0; i < steps.length; i++) {
+                    const step = steps[i];
+                    const rect = step.getBoundingClientRect();
+                    
+                    // Check if step is in viewport
+                    if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
+                        if (i > currentStep) {
+                            currentStep = i;
+                            animateStepProgress(i);
+                        }
+                    }
+                }
+            }
+            
+            function animateStepProgress(stepIndex) {
+                // Add visual indicator for completed steps
+                for (let i = 0; i <= stepIndex; i++) {
+                    const stepNumber = steps[i].querySelector('.step-number');
+                    if (!stepNumber.classList.contains('completed')) {
+                        stepNumber.classList.add('completed');
+                        stepNumber.style.backgroundColor = 'var(--primary-color)';
+                        stepNumber.style.color = 'white';
+                    }
+                }
+            }
+        }
+        
+        // Initialize habit tracking
+        setTimeout(trackHabitStepProgress, 1000);
+        
+        // Add dashboard animation
+        function animateMockWidgets() {
+            const mockWidgets = document.querySelectorAll('.mock-widget');
+            mockWidgets.forEach((widget, index) => {
+                setTimeout(() => {
+                    widget.style.transform = 'translateX(0)';
+                    widget.style.opacity = '1';
+                }, index * 200);
+            });
+        }
+        
+        // Add initial styles for widget animation
+        const style = document.createElement('style');
+        style.textContent = `
+            .mock-widget {
+                transform: translateX(-20px);
+                opacity: 0;
+                transition: all 0.5s ease;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize dashboard animation
+        setTimeout(animateMockWidgets, 800);
+    </script>
+</body>
+</html>

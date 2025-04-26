@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Successful</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ecf0f3;
+  }
+  
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+/* Spendsense logo */
+header {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+.logo-text {
+    font-weight: bold;
+    font-size: 24px;
+    color: #0080ff;
+
+}
+  
+  /* Main Content here */
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+  }
+  
+  .signup-box {
+    background-color: #ecf0f3;
+    border-radius: 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  h1 {
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 0px;
+    color: #0080ff;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #ecf0f3;
+    font-weight: bold;
+    color: #0080ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 24px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.8);
+}
+    #success-message {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  #success-message h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  #success-message p {
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  .small-text {
+    font-size: 13px;
+    color: #666;
+  }
+  
+   #restart-btn {
+    background: #ecf0f3;
+    color: #0080ff;
+    border: none;
+    padding: 8px 16px;
+    width: auto;
+    margin: 10px auto;
+    display: inline-block;
+  }
+  
+  
+ footer {
+  text-align: center;
+  padding: 20px 0;
+  color: #666;
+  font-size: 12px;
+}
+
+/* Button Styling */
+button {
+  background: #0080ff;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+a {
+  color: #0080ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+        <div class="logo">
+          <span class="logo-text">SpendSense</span>
+        </div>
+      </header>
+    
+      <main>
+        <div class="signup-box">
+          <h1>Thank you for Trusting!</h1>
+          
+          
+        <div id="success-message" class="hidden">
+            <div class="success-icon">✓</div>
+            <h2>Registration Successful!</h2>
+            <p>We've sent a confirmation email to <strong id="confirmation-email"></strong>. 
+              Please check your inbox to verify your account.</p>
+            <p class="small-text">Didn't receive an email? Check your spam folder or request a new verification email.</p>
+            <button id="restart-btn">Sign up with different account</button>
+          </div>
+        </div>
+      </main>
+      
+      <footer>
+        <p><a href="../html/homepage.html">Back to Homepage</a></p>
+        <p>© 2025 SpendSense. All rights reserved.</p>
+      </footer>
+
+      <script>
+        // Success Message Elements
+const successMessage = document.getElementById('success-message');
+const confirmationEmail = document.getElementById('confirmation-email');
+const restartButton = document.getElementById('restart-btn');
+const formContainer = document.getElementById('form-container');
+const form = document.getElementById('signup-form');
+
+// Form submission handling
+form.addEventListener('submit', function(e) {
+  // ... previous validation code ...
+  
+  // If form is valid, show success message
+  if (isValid) {
+    console.log('Form is valid, showing success message');
+    
+    // Show loading on button
+    const submitButton = document.getElementById('submit-btn');
+    submitButton.innerHTML = 'Processing...';
+    submitButton.disabled = true;
+    
+    // Form submission if delayed for styling purposes
+    setTimeout(function() {
+      formContainer.style.display = 'none';
+      successMessage.classList.remove('hidden');
+      confirmationEmail.textContent = email;
+      console.log('Success message displayed for email:', email);
+    }, 1500);
+  }
+});
+
+// Restart button functionality - go back to form
+restartButton.addEventListener('click', function() {
+  console.log('Restart button clicked');
+  successMessage.classList.add('hidden');
+  formContainer.style.display = 'block';
+  form.reset();
+  document.getElementById('submit-btn').innerHTML = 'Create Account';
+  document.getElementById('submit-btn').disabled = false;
+});
+      </script>
+  </body>
+</html>
