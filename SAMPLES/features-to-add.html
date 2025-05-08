@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <title>Document</title>
+    <style>
+        /*SMART FEATURES */
+ :root {
+  --primary-color: #0080ff;
+  --background-color: #ecf0f3;
+  --text-color: #333;
+  --shadow-dark: #d1d9e6;
+  --shadow-light: rgba(255, 255, 255, 0.8);
+  --icon-primary: #0080ff;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --accent-color: #5e72e4;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #ecf0f3;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Segoe UI', Arial, sans-serif;    /* remove this later */
+
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+ .benefits-section {
+  padding: 100px 0;
+}
+
+.section-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.section-heading span {
+  color: var(--primary-color);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.benefit-item {
+  background-color: var(--background-color);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  transition: all 0.4s ease;
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.benefit-item.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.benefit-item:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+}
+
+.benefit-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.benefit-description {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.benefit-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.benefit-link:hover {
+  text-decoration: underline;
+}
+
+/* Process Section */
+.process-section {
+  padding: 100px 0;
+  background-color: var(--background-color);
+}
+
+.process-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: #dde1e7;
+  transform: translateX(-50%);
+  box-shadow: inset 1px 1px 2px var(--shadow-dark), inset -1px -1px 2px var(--shadow-light);
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s ease;
+}
+
+.process-step:nth-child(even) {
+  flex-direction: row-reverse;
+  transform: translateX(50px);
+}
+
+.process-step.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.step-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: var(--background-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+  z-index: 1;
+}
+
+.step-details {
+  width: 45%;
+  background-color: var(--background-color);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.step-details:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+}
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+}
+
+.step-heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.step-description {
+  color: #555;
+  margin-bottom: 15px;
+}
+        /*Build Better Financial Habits*/
+.main-wrapper {
+max-width: 1200px;
+width: 100%;
+margin: 0 auto;
+}
+
+.intro-section {
+text-align: center;
+margin-bottom: 3rem;
+padding: 2rem;
+border-radius: 20px;
+background: var(--background-primary);
+
+}
+
+.intro-section h1 {
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 1rem;
+color: var(--text-primary);
+}
+
+.intro-section p {
+font-size: 1.2rem;
+color: var(--text-secondary);
+max-width: 700px;
+margin: 0 auto;
+}
+
+.milestones-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2.5rem;
+}
+
+.milestone-item {
+position: relative;
+padding: 2.5rem;
+border-radius: 20px;
+background: var(--background-primary);
+box-shadow: 8px 8px 16px var(--shadow-dark),
+            -8px -8px 16px var(--shadow-light);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+overflow: hidden;
+}
+
+.milestone-item:hover {
+transform: translateY(-5px);
+box-shadow: 10px 10px 20px var(--shadow-dark),
+            -10px -10px 20px var(--shadow-light);
+}
+
+.milestone-index {
+position: absolute;
+top: -30px;
+right: 10px;
+font-size: 10rem;
+font-weight: 800;
+color: var(--accent-color);
+opacity: 0.08;
+line-height: 1;
+z-index: 0;
+}
+
+.milestone-content {
+position: relative;
+z-index: 1;
+}
+
+.milestone-heading {
+display: inline-block;
+position: relative;
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 1.5rem;
+color: var(--text-primary);
+padding-bottom: 0.75rem;
+}
+
+.milestone-heading::after {
+content: '';
+position: absolute;
+left: 0;
+bottom: 0;
+width: 60px;
+height: 4px;
+border-radius: 2px;
+background: var(--accent-color);
+box-shadow: 2px 2px 4px var(--shadow-dark),
+            -2px -2px 4px var(--shadow-light);
+}
+
+.milestone-description {
+color: var(--text-secondary);
+font-size: 1.05rem;
+line-height: 1.7;
+}
+
+.symbol-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background: var(--background-primary);
+box-shadow: inset 4px 4px 8px var(--shadow-dark),
+            inset -4px -4px 8px var(--shadow-light);
+margin-bottom: 1.5rem;
+}
+
+.milestone-symbol {
+font-size: 1.8rem;
+color: var(--icon-primary);
+}
+
+.action-section {
+text-align: center;
+margin-top: 3rem;
+grid-column: 1 / -1;
+}
+
+.primary-action {
+display: inline-block;
+padding: 1rem 2.5rem;
+border-radius: 50px;
+font-weight: 600;
+font-size: 1.1rem;
+color: white;
+background: linear-gradient(145deg, #5a6de0, #4e61cc);
+box-shadow: 5px 5px 10px var(--shadow-dark),
+          -5px -5px 10px var(--shadow-light);
+border: none;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+}
+
+.primary-action:hover {
+transform: translateY(-3px);
+box-shadow: 7px 7px 14px var(--shadow-dark),
+          -7px -7px 14px var(--shadow-light);
+}
+
+.primary-action:active {
+transform: translateY(0);
+background: linear-gradient(145deg, #4e61cc, #5a6de0);
+box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+            inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Center the fifth milestone */
+.milestone-item:nth-child(5) {
+grid-column: 1 / -1;
+max-width: 600px;
+margin: 0 auto;
+margin-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+.milestones-grid {
+    grid-template-columns: 1fr;
+}
+
+.milestone-item {
+    padding: 2rem;
+}
+
+.milestone-index {
+    font-size: 8rem;
+}
+
+.milestone-item:nth-child(5) {
+    max-width: 100%;
+}
+}
+       
+    </style>
+</head>
+<body>
+    <section class="benefits-section" id="key-benefits">
+        <div class="main-container">
+            <div class="intro-section">
+            <h2 class="section-heading">Smart <span>Features</span></h2>
+            <p>SpendSense is designed to help you take control of your finances with powerful features that make tracking and managing your money easier than ever.</p>
+        </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="benefit-title">Spending Analytics</h3>
+                    <p class="benefit-description">Visualize your spending patterns with intuitive charts and graphs that help you understand where your money goes.</p>
+                    <a href="#" class="benefit-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="benefit-title">Goal Tracking</h3>
+                    <p class="benefit-description">Set financial goals and track your progress over time. Celebrate your wins and stay motivated.</p>
+                    <a href="#" class="benefit-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="benefit-title">Smart Alerts</h3>
+                    <p class="benefit-description">Receive notifications about unusual spending, bill reminders, and budget limits to stay on track.</p>
+                    <a href="#" class="benefit-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Habit Formation</h3>
+                    <p class="benefit-description">Build sustainable financial habits with our guided system and daily tracking tools.</p>
+                    <a href="#" class="benefit-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Secure Storage</h3>
+                    <p class="benefit-description">Your financial data is encrypted and secure, giving you peace of mind while managing your money.</p>
+                    <a href="#" class="benefit-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Mobile Access</h3>
+                    <p class="benefit-description">Track your finances on the go with our mobile app, available for iOS and Android devices.</p>
+                    <a href="#" class="benefit-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Building financial habits -->
+    <div class="main-wrapper">
+        <div class="intro-section">
+            <h2 class="section-heading">Build Better Financial <span>Habits</span></h2>
+            <p>Follow these five simple milestones to transform your financial life and go from penny-stressed to savings-blessed.</p>
+        </div>
+        
+        <div class="milestones-grid">
+            <!-- Milestone 1 -->
+            <div class="milestone-item">
+                <div class="milestone-index">1</div>
+                <div class="milestone-content">
+                    <div class="symbol-wrapper">
+                        <div class="milestone-symbol">📝</div>
+                    </div>
+                    <h3 class="milestone-heading">Track Daily Expenses</h3>
+                    <p class="milestone-description">
+                        Start by recording every expense, no matter how small. This awareness is the foundation of good financial habits. Use our quick-entry system to make it effortless.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Milestone 2 -->
+            <div class="milestone-item">
+                <div class="milestone-index">2</div>
+                <div class="milestone-content">
+                    <div class="symbol-wrapper">
+                        <div class="milestone-symbol">📊</div>
+                    </div>
+                    <h3 class="milestone-heading">Categorize & Analyze</h3>
+                    <p class="milestone-description">
+                        Our smart system automatically categorizes your spending. Review your patterns weekly to identify areas where you can cut back without sacrificing quality of life.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Milestone 3 -->
+            <div class="milestone-item">
+                <div class="milestone-index">3</div>
+                <div class="milestone-content">
+                    <div class="symbol-wrapper">
+                        <div class="milestone-symbol">🎯</div>
+                    </div>
+                    <h3 class="milestone-heading">Set Realistic Goals</h3>
+                    <p class="milestone-description">
+                        Create specific, measurable financial goals based on your spending analysis. Whether saving for a vacation or paying down debt, clear goals drive progress.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Milestone 4 -->
+            <div class="milestone-item">
+                <div class="milestone-index">4</div>
+                <div class="milestone-content">
+                    <div class="symbol-wrapper">
+                        <div class="milestone-symbol">⏱️</div>
+                    </div>
+                    <h3 class="milestone-heading">Build Daily Habits</h3>
+                    <p class="milestone-description">
+                        Use our habit tracker to establish daily financial routines. Simple actions like checking your balance, reviewing recent transactions, or setting aside small amounts add up over time.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Milestone 5 -->
+            <div class="milestone-item">
+                <div class="milestone-index">5</div>
+                <div class="milestone-content">
+                    <div class="symbol-wrapper">
+                        <div class="milestone-symbol">📈</div>
+                    </div>
+                    <h3 class="milestone-heading">Measure Your Progress</h3>
+                    <p class="milestone-description">
+                         Watch your financial health improve with our tracking tools. Celebrate milestones and adjust your strategy based on real results.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         // Navigation Scroll Effect
+ window.addEventListener('scroll', function() {
+    const navBar = document.getElementById('main-nav');
+    if (window.scrollY > 50) {
+        navBar.classList.add('scrolled');
+    } else {
+        navBar.classList.remove('scrolled');
+    }
+});
+
+// Animation on Scroll
+function animateOnScroll() {
+    const benefitItems = document.querySelectorAll('.benefit-item');
+    const processSteps = document.querySelectorAll('.process-step');
+    
+    const options = {
+        threshold: 0.2
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+    
+    benefitItems.forEach(item => {
+        observer.observe(item);
+    });
+    
+    processSteps.forEach(step => {
+        observer.observe(step);
+    });
+}
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+// Hover Effect for Steps
+const stepDetails = document.querySelectorAll('.step-details');
+stepDetails.forEach(detail => {
+detail.addEventListener('mouseenter', function() {
+this.style.transform = 'translateY(-8px)';
+this.style.boxShadow = '8px 8px 16px rgba(0, 0, 0, 0.15), -8px -8px 16px rgba(255, 255, 255, 0.8)';
+});
+
+detail.addEventListener('mouseleave', function() {
+this.style.transform = '';
+this.style.boxShadow = '6px 6px 12px rgba(0, 0, 0, 0.15), -6px -6px 12px rgba(255, 255, 255, 0.8)';
+});
+});
+
+// CTA Button Animation
+const actionButtons = document.querySelectorAll('.action-button, .secondary-action');
+actionButtons.forEach(button => {
+button.addEventListener('mouseenter', function() {
+this.style.transform = 'translateY(-2px)';
+this.style.boxShadow = '5px 5px 10px rgba(0, 0, 0, 0.15), -5px -5px 10px rgba(255, 255, 255, 0.8)';
+});
+
+button.addEventListener('mouseleave', function() {
+this.style.transform = '';
+this.style.boxShadow = '4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.8)';
+});
+});
+
+// Mobile Navigation Toggle
+function createMobileNav() {
+const header = document.querySelector('.top-navigation');
+const navWrapper = document.querySelector('.nav-wrapper');
+
+// Create hamburger menu
+const hamburger = document.createElement('div');
+hamburger.className = 'hamburger';
+hamburger.innerHTML = '<span></span><span></span><span></span>';
+
+// Create mobile nav links container
+const mobileNavLinks = document.createElement('div');
+mobileNavLinks.className = 'mobile-nav-links';
+
+// Add links based on footer links
+const footerLinks = document.querySelectorAll('.footer-column ul li a');
+const uniqueLinks = new Set();
+footerLinks.forEach(link => {
+if (!uniqueLinks.has(link.textContent) && link.textContent) {
+    uniqueLinks.add(link.textContent);
+    const navLink = document.createElement('a');
+    navLink.href = link.href;
+    navLink.textContent = link.textContent;
+    mobileNavLinks.appendChild(navLink);
+}
+});
+
+// Add nav links to header
+navWrapper.appendChild(mobileNavLinks);
+
+// Add styles
+const style = document.createElement('style');
+style.textContent = `
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-links {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-wrapper {
+        justify-content: space-between;
+    }
+    
+    .mobile-nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--background-color);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        transform: translateY(-200%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+    
+    .mobile-nav-links.active {
+        display: flex;
+        transform: translateY(0);
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+`;
+document.head.appendChild(style);
+
+// Insert hamburger before the action button
+const actionButton = document.querySelector('header .action-button');
+actionButton.parentNode.insertBefore(hamburger, actionButton);
+
+// Toggle menu on click
+hamburger.addEventListener('click', function() {
+this.classList.toggle('active');
+mobileNavLinks.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+mobileNavLinks.querySelectorAll('a').forEach(link => {
+link.addEventListener('click', function() {
+    hamburger.classList.remove('active');
+    mobileNavLinks.classList.remove('active');
+});
+});
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+animateOnScroll();
+createMobileNav();
+
+// Add minor delay for better loading experience
+setTimeout(() => {
+document.querySelector('.dashboard-preview').style.opacity = '1';
+}, 300);
+});
+
+// Progress animation for habit tracking steps
+function trackHabitStepProgress() {
+const steps = document.querySelectorAll('.process-step');
+let currentStep = 0;
+
+// Highlight active step on page load based on scroll position
+updateActiveStep();
+
+// Update active step on scroll
+window.addEventListener('scroll', updateActiveStep);
+
+function updateActiveStep() {
+for (let i = 0; i < steps.length; i++) {
+    const step = steps[i];
+    const rect = step.getBoundingClientRect();
+    
+    // Check if step is in viewport
+    if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= 0) {
+        if (i > currentStep) {
+            currentStep = i;
+            animateStepProgress(i);
+        }
+    }
+}
+}
+
+function animateStepProgress(stepIndex) {
+// Add visual indicator for completed steps
+for (let i = 0; i <= stepIndex; i++) {
+    const stepMarker = steps[i].querySelector('.step-marker');
+    if (!stepMarker.classList.contains('completed')) {
+        stepMarker.classList.add('completed');
+        stepMarker.style.backgroundColor = 'var(--primary-color)';
+        stepMarker.style.color = 'white';
+    }
+}
+}
+}
+
+// Initialize habit tracking
+setTimeout(trackHabitStepProgress, 1000);
+
+// Add dashboard animation
+function animateMockWidgets() {
+const mockWidgets = document.querySelectorAll('.data-widget');
+mockWidgets.forEach((widget, index) => {
+setTimeout(() => {
+    widget.style.transform = 'translateX(0)';
+    widget.style.opacity = '1';
+}, index * 200);
+});
+}
+
+// Add initial styles for widget animation
+const style = document.createElement('style');
+style.textContent = `
+.data-widget {
+transform: translateX(-20px);
+opacity: 0;
+transition: all 0.5s ease;
+}
+`;
+document.head.appendChild(style);
+
+// Initialize dashboard animation
+setTimeout(animateMockWidgets, 800);
+    </script>
+</body>
+</html>
